@@ -1,46 +1,44 @@
-// Include the Servo library to manage servo motors
+// Include the Servo library to control servo motors
 #include <Servo.h>
 
-// Declare a variable to store the value from the analog sensor
+// Declare an integer variable to store the sensor reading
 int Sensor = 0;
 
-// Declare a variable for button state (though it's not used in this code)
-int buttonstate = 0;
-
-// Create a Servo object to control a servo motor
+// Create a Servo object for controlling the servo attached to pin 9
 Servo servo_9;
 
-// The setup() function runs once upon startup
+// The setup function runs once when the Arduino starts or resets
 void setup()
 {
-  // Set the A0 pin as input to read values from the analog sensor
-  pinMode(A0, INPUT);
+  // Configure pin A1 as an input
+  pinMode(A1, INPUT);
   
-  // Initialize serial communication at 9600 baud for debugging and monitoring
+  // Start serial communication at 9600 bps
   Serial.begin(9600);
   
-  // Attach the servo motor to pin 9 with pulse widths ranging from 500 to 2500 microseconds
+  // Attach the servo on pin 9 and set its minimum and maximum pulse widths (in microseconds)
+  // This is useful when the default pulse widths (typically 1000us min, 2000us max) do not match your servo
   servo_9.attach(9, 500, 2500);
 }
 
-// The loop() function runs repeatedly after setup() completes
+// The loop function runs repeatedly after the setup is done
 void loop()
 {
-  // Read the value from the sensor connected to A0
-  Sensor = analogRead(A0);
+  // Read the analog value from pin A1 and store it in the Sensor variable
+  Sensor = analogRead(A1);
   
-  // Print the sensor's value to the Serial Monitor for monitoring
+  // Send the sensor value to the Serial Monitor
   Serial.println(Sensor);
   
-  // Pause for 100 milliseconds to create a small delay between readings
-  delay(100); 
+  // Pause the loop for 100 milliseconds
+  delay(100);
   
-  // Check if the sensor value is greater than 900
-  if (Sensor > 900) {
-    // If it is, set the servo to 58 degrees
+  // If the sensor value is less than 30
+  if (Sensor < 30) {
+    // Move the servo to approximately 58 degrees (angle is approximation depending on the servo calibration)
     servo_9.write(58);
   } else {
-    // Otherwise, set the servo to 0 degrees
+    // Else, move the servo to the 0-degree position (or its starting position)
     servo_9.write(0);
   }
 }
