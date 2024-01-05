@@ -1,6 +1,6 @@
 # Arduino Sensor-Controlled Servo
 
-## Project Overview - https://github.com/calluxpore/DGIF-6037-Creation-and-Computation-Emotive-Objects-Experiment-1
+## Project Overview
 
 This Arduino project demonstrates how to control a servo motor based on sensor readings. The code includes the Servo library to manage the servo motor connected to pin 9 and reads values from an analog sensor connected to pin A1. Depending on the sensor value, the servo motor's position is adjusted. This project is ideal for beginners looking to understand servo control with Arduino.
 
@@ -59,3 +59,4 @@ This project is open-sourced under the MIT License.
 ## Contact
 
 For more information, queries, or feedback, please contact [GitHub Profile Link](https://github.com/calluxpore).
+https://github.com/calluxpore/DGIF-6037-Creation-and-Computation-Emotive-Objects-Experiment-1
